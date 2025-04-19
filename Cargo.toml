@@ -1,0 +1,14 @@
+[workspace]
+members = ["Keys", "DataFetcher", "HashTable", "Trading"]
+
+[package]
+name = "round1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+HashTable = { path = "./HashTable" }
+Keys = { path = "./Keys" }
+Trading = { path = "./Trading" }
+DataFetcher = { path = "./DataFetcher" }
