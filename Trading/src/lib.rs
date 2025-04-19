@@ -4,6 +4,7 @@ pub mod trading {
     use std::process::Command;
     use std::time::Instant;
 
+    // Struct to put out the a single ticker info.
     #[derive(Debug, Serialize, Deserialize)]
     #[serde(rename_all = "camelCase")]
     pub struct OneTricker {
@@ -27,10 +28,12 @@ pub mod trading {
         exercise_price: String,
     }
 
+    // Perform fetch ticker from url and parse them.
     pub fn retrieve_and_parse_tickers() {
+        // use this time linux environment.
         let output = Command::new("curl")
-            .arg("-s")  // Silent mode
-            .arg("-X")  // Specify request method
+            .arg("-s") 
+            .arg("-X")
             .arg("GET")
             .arg("https://eapi.binance.com/eapi/v1/ticker")
             .output()

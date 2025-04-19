@@ -2,11 +2,13 @@ pub mod hash {
     const NULL: usize = 0;
     use sha3::{Digest, Sha3_256};
 
+    // The status flag of every slot.
     enum Status {
         Free,
         Used
     }
 
+    // Struct of the properties of every single slot in the hash table.
     pub struct Slot {
         key: String,
         val: usize,
@@ -14,8 +16,7 @@ pub mod hash {
         count: usize
     }
 
-
-
+    // Struct of the hash table.
     pub struct HashTable {
         table: Vec<Slot>,
         table_size: usize,
@@ -23,6 +24,7 @@ pub mod hash {
     }
 
     impl HashTable {
+        // Method to create a new hash table of a certain size.
         pub fn new(new_size: usize) -> Self {
             let mut slots = Vec::with_capacity(new_size.try_into().unwrap_or(0));
             for _ in 0.. new_size {
@@ -36,7 +38,7 @@ pub mod hash {
             HashTable{table: slots, table_size: new_size, counter: NULL}
         }
 
-
+        // Private method to find the potential index of a key.
         fn find_index(&self, key: String) -> usize {
             let mut hasher = sha3::Sha3_256::new();
             hasher.update(key);

@@ -1,6 +1,7 @@
 pub mod keys {
     use std::collections::HashMap;
 
+    // Private method to clean the words from special characters.
     fn clean_words(text: &str) -> Vec<&str> {
         // not classified chars
         let to_remove_1 = '“';
@@ -9,6 +10,7 @@ pub mod keys {
             .filter(|word| !word.is_empty()).collect()
     }
 
+    // Pair the keys as the words and their values as their repeatances.
     pub fn pair_keys(text: &str) -> HashMap<String, usize> {
         let mut map = HashMap::new();
         
